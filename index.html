@@ -127,27 +127,60 @@
 
   <script type="text/javascript">
 
-    vkBridge.send("VKWebAppInit")
-      .then((data) => {
-        if (data.result) {
+    vkBridge.send("VKWebAppInit").then((data) =>
+    {
+        if (data.result)
+        {
           console.log("SDK INITIALIZE");
-        } else {
+        } 
+        else 
+        {
           console.log("Вот такая вот ошибка");
           console.log(data.result);
         }
+    })
+    .catch((error) =>
+    {
+      console.log("Вот такая вот ошибка 2");
+      console.log(error);
+    });
+
+    function auth() 
+    {
+      vkBridge.send('VKWebAppGetUserInfo').then(_info => {newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info)); });
+    }
+
+    function GetPlayerData(key) 
+    {
+        vkBridge.send('VKWebAppStorageGet', {"keys":[key]}).then((data) => 
+        { 
+          if (data.keys) 
+          {
+            // Значения получены
+            console.log("Game load");
+            newInstance.SendMessage('VK', 'LoadPlayerData', JSON.stringify(data));
+          }
+        })
+        .catch((error) => 
+        {
+          // Ошибка
+          console.log(error);
+        });
+    }
+
+    function SetPlayerData(key, value)
+    {
+      vkBridge.send('VKWebAppStorageSet', { "key": key, "value": value}).then((data) => 
+      {
+        if (data.result) 
+        {
+          // Значение переменной задано
+          console.log("Game saved");
+        }
       })
       .catch((error) => {
-        console.log("Вот такая вот ошибка 2");
+        // Ошибка
         console.log(error);
-      });
-
-    function auth() {
-      vkBridge.send('VKWebAppGetUserInfo').then(_info => {
-        //console.log(_info);
-        console.log("working");
-        console.log(JSON.stringify(_info));
-        newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info));
-        console.log("ending");
       });
     }
 
