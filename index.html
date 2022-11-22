@@ -152,7 +152,7 @@
 
     function GetPlayerData(key) 
     {
-        vkBridge.send('VKWebAppStorageGet', {"keys":[key]}).then((data) => 
+        vkBridge.send('VKWebAppStorageGet', {"keys":[key.stringify]}).then((data) => 
         { 
           if (data.keys) 
           {
@@ -170,7 +170,7 @@
 
     function SetPlayerData(key, value)
     {
-      vkBridge.send('VKWebAppStorageSet', { "key": key, "value": value}).then((data) => 
+      vkBridge.send('VKWebAppStorageSet', { "key": key.stringify, "value": value}).then((data) => 
       {
         if (data.result) 
         {
