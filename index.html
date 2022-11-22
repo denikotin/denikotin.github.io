@@ -158,6 +158,7 @@
           {
             // Значения получены
             console.log("Game load");
+            console.log(data);
             newInstance.SendMessage('VK', 'LoadPlayerData', JSON.stringify(data));
           }
         })
