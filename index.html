@@ -143,8 +143,11 @@
 
     function auth() {
       vkBridge.send('VKWebAppGetUserInfo').then(_info => {
-        console.log(_info);
+        //console.log(_info);
+        console.log("working");
+        console.log(JSON.stringify(_info));
         newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info));
+        console.log("working");
       });
     }
 
