@@ -146,7 +146,7 @@
         //console.log(_info);
         console.log("working");
         console.log(JSON.stringify(_info));
-        newInstance.SendMessage('VK', 'ShowUserData', _info);
+        newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info));
         console.log("ending");
       });
     }
