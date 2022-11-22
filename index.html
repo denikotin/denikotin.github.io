@@ -168,9 +168,10 @@
         });
     }
 
-    function SetPlayerData(key, value)
+    function SetPlayerData(value)
     {
-      console.log(value);
+      console.log("Value in html" + value);
+      console.log("Value in html stringify" + JSON.stringify(value));
       vkBridge.send('VKWebAppStorageSet', { "key": "save", "value": value}).then((data) => 
       {
         if (data.result) 
