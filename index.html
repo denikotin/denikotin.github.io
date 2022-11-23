@@ -149,7 +149,7 @@
       vkBridge.send('VKWebAppGetUserInfo').then(_info => {newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info)); });
     }
 
-    function GetPlayerData(key) 
+    function GetPlayerData() 
     {
         vkBridge.send('VKWebAppStorageGet', {"keys":["save"]}).then((data) => 
         { 
