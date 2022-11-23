@@ -147,6 +147,7 @@
     function auth() 
     {
       vkBridge.send('VKWebAppGetUserInfo').then(_info => {newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info)); });
+      console.log("HTML info" + _info);
     }
 
     function GetPlayerData() 
