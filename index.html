@@ -19,11 +19,6 @@
       </div>
     </div>
     <div id="unity-warning"> </div>
-    <div id="unity-footer">
-      <div id="unity-webgl-logo"></div>
-      <div id="unity-fullscreen-button"></div>
-      <div id="unity-build-title">Suetolog</div>
-    </div>
   </div>
 
   <script>
@@ -92,11 +87,10 @@
       // performance, uncomment the following line:
       // config.devicePixelRatio = 1;
 
-      unityShowBanner('WebGL builds are not supported on mobile devices.');
     } else {
       // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-      canvas.style.width = "960px";
+      canvas.style.width = "800px";
       canvas.style.height = "600px";
     }
 
@@ -111,9 +105,6 @@
       }).then((unityInstance) => {
         newInstance = unityInstance;
         loadingBar.style.display = "none";
-        fullscreenButton.onclick = () => {
-          unityInstance.SetFullscreen(1);
-        };
       }).catch((message) => {
         alert(message);
       });
