@@ -128,8 +128,7 @@
           console.log("Вот такая вот ошибка");
           console.log(data.result);
         }
-    })
-    .catch((error) =>
+    }).catch((error) =>
     {
       console.log("Вот такая вот ошибка 2");
       console.log(error);
@@ -146,7 +145,6 @@
         { 
           if (data.keys) 
           {
-            // Значения получены
             console.log("Game load");
             console.log(data);
             newInstance.SendMessage('VK', 'LoadPlayerData', JSON.stringify(data));
@@ -154,7 +152,6 @@
         })
         .catch((error) => 
         {
-          // Ошибка
           console.log(error);
         });
     }
@@ -167,12 +164,67 @@
       {
         if (data.result) 
         {
-          // Значение переменной задано
           console.log("Game saved");
         }
       })
-      .catch((error) => {
-        // Ошибка
+      .catch((error) => 
+      {
+        console.log(error);
+      });
+    }
+
+    function ShowFullscreenAd()
+    {
+      vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'interstitial'}).then( (data) => 
+      { 
+        if (data.result)
+        {
+          console.log("Advertisment showed");
+        } 
+        else 
+        {
+
+        }
+      }).catch((error) => 
+      { 
+        console.log(error); 
+      });
+    }
+
+    function ShowRewardAd(value)
+    {
+      vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' }).then((data) => 
+      {
+        if (data.result)
+        {
+          console.log('Реклама показана');
+          gameInstance.SendMessage('VK', 'AddMoney', value);
+        }
+        else
+        {
+          console.log('Ошибка при показе');
+        } 
+      }).catch((error) => 
+      { 
+        console.log(error);
+      });
+    }
+
+    function ShowReviveAd()
+    {
+      vkBridge.send('VKWebAppShowNativeAds', { ad_format: 'reward' }).then((data) => 
+      {
+        if (data.result)
+        {
+          console.log('Реклама показана');
+          gameInstance.SendMessage('VK', 'Revive');
+        }
+        else
+        {
+          console.log('Ошибка при показе');
+        } 
+      }).catch((error) => 
+      { 
         console.log(error);
       });
     }
