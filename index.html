@@ -141,7 +141,7 @@
 
     function GetPlayerData() 
     {
-        vkBridge.send('VKWebAppStorageGet', {"keys":["gay"]}).then((data) => 
+        vkBridge.send('VKWebAppStorageGet', {"keys":["serega"]}).then((data) => 
         { 
           if (data.keys) 
           {
@@ -160,7 +160,7 @@
     {
       console.log("Value in html" + value);
       console.log("Value in html stringify" + JSON.stringify(value));
-      vkBridge.send('VKWebAppStorageSet', { "key": "gay", "value": JSON.stringify(value)}).then((data) => 
+      vkBridge.send('VKWebAppStorageSet', { "key": "serega", "value": JSON.stringify(value)}).then((data) => 
       {
         if (data.result) 
         {
