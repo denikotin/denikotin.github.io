@@ -134,7 +134,7 @@
       console.log(error);
     });
 
-    function auth() 
+    function Auth() 
     {
       vkBridge.send('VKWebAppGetUserInfo').then(_info => {newInstance.SendMessage('VK', 'ShowUserData', JSON.stringify(_info)); });
     }
@@ -228,6 +228,38 @@
         console.log(error);
       });
     }
+
+    function CheckFullscreenAds()
+    {
+      vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'}).then((data) => 
+      {
+        if (data.result)
+        {
+          console.log("Fullscreen ad load");
+        } 
+        else
+        {
+          console.log("Fullscreen ad didnt load");
+        }
+        }).catch((error) => { console.log(error); });
+    }
+
+    function CheckRewardAds()
+    {
+      vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'reward'}).then((data) => 
+      {
+        if (data.result)
+        {
+          console.log("Reward ad load");
+        } 
+        else
+        {
+          console.log("Reward ad didnt load");
+        }
+        }).catch((error) => { console.log(error); });
+    }
+
+
 
   </script>
 
